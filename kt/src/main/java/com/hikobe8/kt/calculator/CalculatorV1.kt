@@ -2,7 +2,7 @@ package com.hikobe8.kt.calculator
 
 import kotlin.system.exitProcess
 
-val help = """
+val HELP = """
 --------------------------------------
 使用说明:
 1. 输入 1 + 1，按回车，即可使用计算器；
@@ -11,9 +11,11 @@ val help = """
 --------------------------------------
 """.trimIndent()
 
+val EXIT = "exit"
+
 fun main(args: Array<String>) {
     while (true) {
-        println(help)
+        println(HELP)
         val input = readLine()?:continue
         if ("exit" == input) exitProcess(0)
         val inputList = input.split(" ")
