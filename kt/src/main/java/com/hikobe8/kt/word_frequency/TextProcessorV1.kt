@@ -13,7 +13,7 @@ class TextProcessorV1 {
 
     private fun sortByFrequency(countMap: MutableMap<String, Int>): MutableList<WordFrequency> {
         val list = ArrayList<WordFrequency>()
-        countMap.forEach { word, count ->
+        countMap.forEach { (word, count) ->
             val wordFrequency = WordFrequency(word, count)
             list.add(wordFrequency)
         }
