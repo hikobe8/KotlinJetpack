@@ -1,6 +1,6 @@
 package com.hikobe8.kt.word_frequency
 
-class TextProcessorV2 {
+class TextProcessorV3 {
 
     private fun String.clean(): String {
         return replace("[^a-zA-Z]".toRegex(), " ")
@@ -17,7 +17,7 @@ class TextProcessorV2 {
         return map
     }
 
-    private fun <T> Map<String, Int>.map2List(transform: (Map.Entry<String, Int>) -> T): MutableList<T> {
+    private inline fun <T> Map<String, Int>.map2List(transform: (Map.Entry<String, Int>) -> T): MutableList<T> {
         val list = mutableListOf<T>()
         entries.forEach { entry ->
             val freq = transform(entry)

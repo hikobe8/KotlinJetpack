@@ -1,5 +1,6 @@
 import com.hikobe8.kt.word_frequency.TextProcessorV1
 import com.hikobe8.kt.word_frequency.TextProcessorV2
+import com.hikobe8.kt.word_frequency.TextProcessorV3
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -17,6 +18,14 @@ class TestTextProcessor {
     fun testV2(){
         val textProcessorV2 = TextProcessorV2()
         val processText = textProcessorV2.processText("Kotlin is good!!!! I love Kotlin!")
+        println(processText)
+        assertEquals(2, processText[0].count)
+    }
+
+    @Test
+    fun testV3(){
+        val textProcessorV3 = TextProcessorV3()
+        val processText = textProcessorV3.processText("Kotlin is good!!!! I love Kotlin!")
         println(processText)
         assertEquals(2, processText[0].count)
     }

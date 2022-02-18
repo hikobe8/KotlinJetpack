@@ -1,26 +1,24 @@
 package com.hikobe8.kt.word_frequency
 
 import java.io.File
-import java.nio.charset.Charset
 
 class TextProcessorV1 {
-    fun processText(text: String): MutableList<WordFrequency> {
+    fun processText(text: String): List<WordFrequency> {
         val cleanText = clean(text)
         val words = cleanText.split(" ")
         val countMap = getWordCount(words)
         return sortByFrequency(countMap)
     }
 
-    private fun sortByFrequency(countMap: MutableMap<String, Int>): MutableList<WordFrequency> {
+    private fun sortByFrequency(countMap: MutableMap<String, Int>): List<WordFrequency> {
         val list = ArrayList<WordFrequency>()
         countMap.forEach { (word, count) ->
             val wordFrequency = WordFrequency(word, count)
             list.add(wordFrequency)
         }
-        list.sortByDescending {
+        return list.sortedByDescending {
             it.count
         }
-        return list
     }
 
     private fun getWordCount(words: List<String>): MutableMap<String, Int> {
@@ -41,7 +39,7 @@ class TextProcessorV1 {
 
 data class WordFrequency(val word: String, val count: Int)
 
-fun TextProcessorV1.processFile(file: File): MutableList<WordFrequency> {
+fun TextProcessorV1.processFile(file: File): List<WordFrequency> {
     val text = file.readText(Charsets.UTF_8)
     return processText(text)
 }
